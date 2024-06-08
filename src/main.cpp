@@ -1,5 +1,6 @@
 #include <raylib.h>
-#include "spaceship.hpp"
+#include "Game.hpp"
+
 
 int main()
 {
@@ -13,13 +14,16 @@ int main()
     InitWindow(screenWidth, screenHeight, "Space Invaders");
     SetTargetFPS(60);
 
-    Spaceship spaceship;
-
+    Game game;
+    
     while (WindowShouldClose() == false)
-    {
+    {   
+        game.HandleInput();
+        game.Update();
         BeginDrawing();
         ClearBackground(grey);
-        spaceship.Draw();
+        game.Draw();
+    
         EndDrawing();
     }
 
